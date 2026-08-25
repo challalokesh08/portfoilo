@@ -182,8 +182,9 @@
     /* ---------- Projects ---------- */
     .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.4rem; }
     .proj {
-      position: relative; border-radius: 14px; padding: 2.6rem 2.4rem; overflow: hidden;
+      position: relative; border-radius: 14px; padding: 2.6rem 2.4rem; overflow: hidden; cursor: pointer;
       background: var(--panel); border: 1px solid var(--border-soft); transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+      display: block; color: inherit;
     }
     .proj::before {
       content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity 0.4s ease;
@@ -375,13 +376,43 @@
     <h2 class="section-title reveal">Things I've created</h2>
     <p class="section-sub reveal">// a mix of AI, web &amp; robotics from my learning journey</p>
     <div class="proj-grid">
+      <a class="proj reveal from-left" href="https://github.com/challalokesh08/mcp-pay" target="_blank">
+        <div class="idx">module: mcp-pay.ts</div>
+        <h3>mcp-pay</h3>
+        <p>x402 monetization layer on Algorand that lets AI agents pay for MCP tools per call — programmable, on-chain microtransactions for agentic economies.</p>
+        <div class="tags"><span class="tag">TypeScript</span><span class="tag c">Algorand</span><span class="tag c">x402</span><span class="tag p">MCP</span><span class="tag p">AI Agents</span></div>
+      </a>
+      <a class="proj reveal from-right" href="https://github.com/challalokesh08/AI-Powered-Meeting-Summarizer" target="_blank">
+        <div class="idx">module: meeting_summarizer.py</div>
+        <h3>AI-Powered Meeting Summarizer</h3>
+        <p>Gradio app that transcribes meeting audio via whisper.cpp and generates concise summaries with Ollama — extracting key points, decisions, and action items.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag c">Gradio</span><span class="tag c">Whisper</span><span class="tag p">Ollama</span><span class="tag p">NLP</span></div>
+      </a>
+      <a class="proj reveal from-left" href="https://github.com/challalokesh08/Blockchain_framework_for-secure_distributed_healthcare_system" target="_blank">
+        <div class="idx">module: healthledger.js</div>
+        <h3>HealthLedger — Blockchain Healthcare</h3>
+        <p>Full-stack healthcare blockchain with encrypted patient records, a tamper-proof distributed ledger, smart contracts, and a responsive UI + mobile app.</p>
+        <div class="tags"><span class="tag">JavaScript</span><span class="tag c">Blockchain</span><span class="tag c">Smart Contracts</span><span class="tag p">Healthcare</span></div>
+      </a>
+      <a class="proj reveal from-right" href="https://github.com/challalokesh08/Customer-Churn-Prediction" target="_blank">
+        <div class="idx">module: churn_prediction.py</div>
+        <h3>Customer Churn Prediction</h3>
+        <p>Deep Learning (ANN) app predicting customer churn from usage &amp; demographics on the Telco dataset, with a live Streamlit demo for proactive retention.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag c">Deep Learning</span><span class="tag c">Streamlit</span><span class="tag p">ML</span></div>
+      </a>
+      <a class="proj reveal from-left" href="https://github.com/challalokesh08/Resume_Ranker_AI" target="_blank">
+        <div class="idx">module: resume_ranker.ai</div>
+        <h3>Resume Ranker AI</h3>
+        <p>Ranks multiple resumes against a JD using TF-IDF + Cosine Similarity, with multi-PDF parsing and an interactive Streamlit dashboard for recruiters.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag c">NLP</span><span class="tag c">Streamlit</span><span class="tag p">TF-IDF</span><span class="tag p">Cosine</span></div>
+      </a>
+      <a class="proj reveal from-right" href="https://github.com/challalokesh08/Cybersecurity-Essentials" target="_blank">
+        <div class="idx">module: cybersec.py</div>
+        <h3>Cybersecurity Essentials</h3>
+        <p>Hands-on security implementations — AES symmetric encryption with PKCS7/PBKDF2 and a dictionary-based SHA-256 password cracker.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag c">Cryptography</span><span class="tag c">AES</span><span class="tag p">SHA-256</span></div>
+      </a>
       <div class="proj reveal from-left">
-        <div class="idx">module: resume_ranking.ai</div>
-        <h3>AI Based Resume Ranking</h3>
-        <p>Full-stack screening tool using NLP (SpaCy/NLTK) + Cosine Similarity to match resumes vs JDs at 90%+ accuracy. Flask backend + Streamlit dashboard, PyPDF2 &amp; pdfplumber parsing.</p>
-        <div class="tags"><span class="tag">Python</span><span class="tag c">Flask</span><span class="tag c">Streamlit</span><span class="tag p">SpaCy</span><span class="tag p">NLTK</span></div>
-      </div>
-      <div class="proj reveal from-right">
         <div class="idx">module: human_follow.bot</div>
         <h3>Human Following Robot</h3>
         <p>IoT autonomous robot with Arduino Uno, ultrasonic &amp; IR sensors to track human distance/movement, driving real-time locomotion via DC motors.</p>
