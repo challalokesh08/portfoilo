@@ -2,7 +2,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Portfolio - Name Surname</title>
+  <title>Challa Lokesh - Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -29,6 +29,7 @@
 
     html {
       font-size: 62.5%;
+      scroll-behavior: smooth;
     }
 
 
@@ -145,7 +146,25 @@
     .hero p {
       font-size: 1.8rem;
       color: #bdc3c7;
+      margin-bottom: 1rem;
+    }
+
+
+    .hero .contact-line {
+      font-size: 1.5rem;
+      color: #95a5a6;
       margin-bottom: 2rem;
+    }
+
+
+    .hero .contact-line a {
+      color: #bdc3c7;
+      text-decoration: none;
+    }
+
+
+    .hero .contact-line a:hover {
+      color: #e74c3c;
     }
 
 
@@ -232,6 +251,51 @@
     }
 
 
+    /* Experience & Education */
+    .timeline {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+
+    .timeline-item {
+      background: var(--bg-section);
+      border-left: 4px solid var(--accent);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border-radius: 0 8px 8px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+
+    .timeline-item h3 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 0.3rem;
+    }
+
+
+    .timeline-item .meta {
+      font-size: 1.4rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+
+    .timeline-item p,
+    .timeline-item li {
+      font-size: 1.5rem;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+    }
+
+
+    .timeline-item ul {
+      padding-left: 2rem;
+    }
+
+
     /* Projects */
     .projects-grid {
       display: grid;
@@ -256,12 +320,15 @@
 
     .project-img {
       height: 200px;
-      background: #dee2e6;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--primary);
-      font-size: 1.4rem;
+      color: #ecf0f1;
+      font-size: 1.6rem;
+      font-weight: 600;
+      text-align: center;
+      padding: 1rem;
     }
 
 
@@ -301,39 +368,59 @@
 
 
     /* Skills */
-    .skills-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
+    .skills-category {
+      max-width: 900px;
+      margin: 0 auto 2.5rem;
     }
 
 
-    .skill-bar {
-      height: 10px;
-      background: #e0e0e0;
-      border-radius: 5px;
-      overflow: hidden;
+    .skills-category h3 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
     }
 
 
-    .skill-bar-fill {
-      height: 100%;
+    .tech-tags.center {
+      justify-content: center;
+    }
+
+
+    .tech-tag.alt {
       background: var(--primary);
-      width: 0;
-      transition: width 1s ease;
+      color: #ecf0f1;
     }
 
 
-    .skill-name {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.5rem;
-      font-size: 1.4rem;
+    .tech-tag.alt2 {
+      background: #e74c3c;
+      color: #fff;
     }
 
 
-    .skill-percent {
-      color: var(--text-light);
+    /* Certifications */
+    .cert-list {
+      max-width: 800px;
+      margin: 0 auto;
+      list-style: none;
+    }
+
+
+    .cert-list li {
+      background: var(--bg-section);
+      padding: 1.5rem 2rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      font-size: 1.6rem;
+      color: var(--text);
+      border-left: 4px solid var(--primary);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+
+    .cert-list li span {
+      color: var(--accent);
+      font-weight: 600;
     }
 
 
@@ -344,18 +431,36 @@
     }
 
 
-    .contact h2 {
+    .contact .section-title h2 {
       color: #ecf0f1;
     }
 
 
-    .contact p {
+    .contact .section-title p {
       color: #bdc3c7;
     }
 
 
     .contact .btn {
       background: #e74c3c;
+    }
+
+
+    .contact-info {
+      text-align: center;
+      font-size: 1.6rem;
+      margin-bottom: 2rem;
+    }
+
+
+    .contact-info a {
+      color: #e74c3c;
+      text-decoration: none;
+    }
+
+
+    .contact-info a:hover {
+      text-decoration: underline;
     }
 
 
@@ -393,11 +498,14 @@
   <!-- Navigation -->
   <nav>
     <div class="nav-container">
-      <a href="#" class="logo">Portfolio</a>
+      <a href="#" class="logo">CL</a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#certifications">Certifications</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -407,8 +515,17 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
-      <h1>Hello, I'm <span>Name Surname</span></h1>
-      <p>Student • Developer • Creator</p>
+      <h1>Hello, I'm <span>Challa Lokesh</span></h1>
+      <p>Information Science &amp; Engineering Student • Developer</p>
+      <p class="contact-line">
+        Bangalore, India &nbsp;•&nbsp; 6305363032 &nbsp;•&nbsp;
+        <a href="mailto:lokeshchalla1214@gmail.com">lokeshchalla1214@gmail.com</a>
+      </p>
+      <p class="contact-line">
+        <a href="https://linkedin.com/in/challa-lokesh-2a53a3287">linkedin.com/in/challa-lokesh-2a53a3287</a>
+        &nbsp;•&nbsp;
+        <a href="https://github.com/challalokesh08">github.com/challalokesh08</a>
+      </p>
       <a href="#about" class="btn">Learn More</a>
     </div>
   </section>
@@ -418,20 +535,67 @@
   <section class="section" id="about">
     <div class="section-title">
       <h2>About Me</h2>
-      <p>Passionate student exploring the world of technology and design</p>
+      <p>Adaptable engineer exploring software, vision, and security</p>
     </div>
 
 
     <div class="about-img">
       <!-- Replace with your actual photo -->
-      <img src="https://via.placeholder.com/250" alt="Your Photo">
+      <img src="https://via.placeholder.com/250" alt="Challa Lokesh">
     </div>
 
 
-    <div class="about-text">
-      <h3>Computer Science Student</h3>
-      <p>I'm a dedicated student with a passion for building web applications and solving complex problems. I love learning new technologies and creating projects that make a difference.</p>
-      <p>Currently studying at [Your University] with a focus on full-stack development, cloud computing, and user experience design.</p>
+    <div class="about-text" style="max-width: 800px; margin: 0 auto; text-align: center;">
+      <h3>Information Science &amp; Engineering Student</h3>
+      <p>An adaptable Information Science Engineering student with a strong foundation in programming, software engineering principles, and hands-on technical execution. Proven track record of delivering team-driven engineering projects, with a strong commitment to continuous learning and rapid technology adoption.</p>
+    </div>
+  </section>
+
+
+  <!-- Education Section -->
+  <section class="section" id="education">
+    <div class="section-title">
+      <h2>Education</h2>
+      <p>Academic background</p>
+    </div>
+
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Bachelor of Engineering — Information Science &amp; Engineering</h3>
+        <p class="meta">Cambridge Institute of Technology &nbsp;•&nbsp; 2023 — Expected 2027</p>
+        <p>Current CGPA: 7.6 (6th Sem)</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Experience Section -->
+  <section class="section" id="experience">
+    <div class="section-title">
+      <h2>Experience</h2>
+      <p>Professional internships &amp; roles</p>
+    </div>
+
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Web Developer</h3>
+        <p class="meta">Parking Pop by SFM Technologies Pvt Ltd (Virtual) &nbsp;•&nbsp; July 2025 — October 2025</p>
+        <ul>
+          <li>Designed and maintained scalable relational database schemas, ensuring seamless data flow between front-end UI components and the backend server.</li>
+        </ul>
+      </div>
+
+
+      <div class="timeline-item">
+        <h3>Cyber Security Intern</h3>
+        <p class="meta">Codec Technologies (Remote) &nbsp;•&nbsp; March 2026 — April 2026</p>
+        <ul>
+          <li>Engineered a data privacy tool implementing AES symmetric encryption, applying PKCS7 padding and PBKDF2 key derivation to secure sensitive data blocks.</li>
+          <li>Developed a high-velocity dictionary-based password cracker utilizing Python to test vulnerability thresholds of SHA-256 hashes.</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -440,56 +604,37 @@
   <section class="section" id="projects">
     <div class="section-title">
       <h2>My Projects</h2>
-      <p>Some of the projects I've built during my learning journey</p>
+      <p>Selected engineering work</p>
     </div>
 
 
     <div class="projects-grid">
-      <!-- Project 1 -->
       <div class="project-card">
-        <div class="project-img">
-          Project 1
-        </div>
+        <div class="project-img">AI Based Resume Ranking</div>
         <div class="project-content">
-          <h3>Weather App</h3>
-          <p>A responsive weather application that fetches real-time data from a public API. Built with HTML, CSS, and JavaScript.</p>
+          <h3>AI Based Resume Ranking</h3>
+          <p>A full-stack screening tool leveraging NLP (SpaCy/NLTK) and Cosine Similarity to match resumes against job descriptions with 90%+ accuracy. Features a Flask backend and a Streamlit recruiter dashboard, using PyPDF2 and pdfplumber for automated parsing.</p>
           <div class="tech-tags">
-            <span class="tech-tag">HTML</span>
-            <span class="tech-tag">CSS</span>
-            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Flask</span>
+            <span class="tech-tag">Streamlit</span>
+            <span class="tech-tag">SpaCy</span>
+            <span class="tech-tag">NLTK</span>
           </div>
         </div>
       </div>
 
 
-      <!-- Project 2 -->
       <div class="project-card">
-        <div class="project-img">
-          Project 2
-        </div>
+        <div class="project-img">Human Following Robot</div>
         <div class="project-content">
-          <h3>Task Manager</h3>
-          <p>A sleek task management app with local storage persistence. Features add, edit, delete, and categorize tasks.</p>
+          <h3>Human Following Robot</h3>
+          <p>An IoT autonomous robot using Arduino Uno, ultrasonic sensors, and IR sensors to calculate target distance and trace human movement. Programmed system logic in the Arduino IDE to drive real-time locomotion via DC motors and mechanical sensors.</p>
           <div class="tech-tags">
-            <span class="tech-tag">React</span>
-            <span class="tech-tag">LocalStorage</span>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- Project 3 -->
-      <div class="project-card">
-        <div class="project-img">
-          Project 3
-        </div>
-        <div class="project-content">
-          <h3>Portfolio Website</h3>
-          <p>My personal portfolio built with modern CSS techniques and smooth animations. Fully responsive across all devices.</p>
-          <div class="tech-tags">
-            <span class="tech-tag">CSS Grid</span>
-            <span class="tech-tag">Flexbox</span>
-            <span class="tech-tag">Animation</span>
+            <span class="tech-tag">Arduino</span>
+            <span class="tech-tag">IoT</span>
+            <span class="tech-tag">C</span>
+            <span class="tech-tag">CV</span>
           </div>
         </div>
       </div>
@@ -501,64 +646,66 @@
   <section class="section" id="skills">
     <div class="section-title">
       <h2>Skills</h2>
-      <p>Technologies I've been mastering</p>
+      <p>Technologies I work with</p>
     </div>
 
 
-    <div class="skills-container">
-      <div class="skill-bar">
-        <div class="skill-name">
-          <span>HTML</span>
-          <span class="skill-percent">90%</span>
-        </div>
-        <div class="skill-bar-fill" style="width: 90%"></div>
-      </div>
-
-
-      <div class="skill-bar">
-        <div class="skill-name">
-          <span>CSS</span>
-          <span class="skill-percent">85%</span>
-        </div>
-        <div class="skill-bar-fill" style="width: 85%"></div>
-      </div>
-
-
-      <div class="skill-bar">
-        <div class="skill-name">
-          <span>JavaScript</span>
-          <span class="skill-percent">75%</span>
-        </div>
-        <div class="skill-bar-fill" style="width: 75%"></div>
-      </div>
-
-
-      <div class="skill-bar">
-        <div class="skill-name">
-          <span>React</span>
-          <span class="skill-percent">60%</span>
-        </div>
-        <div class="skill-bar-fill" style="width: 60%"></div>
-      </div>
-
-
-      <div class="skill-bar">
-        <div class="skill-name">
-          <span>Git</span>
-          <span class="skill-percent">80%</span>
-        </div>
-        <div class="skill-bar-fill" style="width: 80%"></div>
-      </div>
-
-
-      <div class="skill-bar">
-        <div class="skill-name">
-          <span>Node.js</span>
-          <span class="skill-percent">50%</span>
-        </div>
-        <div class="skill-bar-fill" style="width: 50%"></div>
+    <div class="skills-category">
+      <h3>Programming Languages</h3>
+      <div class="tech-tags center">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Java</span>
+        <span class="tech-tag">C</span>
       </div>
     </div>
+
+
+    <div class="skills-category">
+      <h3>Frameworks &amp; Libraries</h3>
+      <div class="tech-tags center">
+        <span class="tech-tag alt">Flask</span>
+        <span class="tech-tag alt">OpenCV</span>
+        <span class="tech-tag alt">Streamlit</span>
+        <span class="tech-tag alt">SpaCy</span>
+        <span class="tech-tag alt">NLTK</span>
+        <span class="tech-tag alt">PyPDF2</span>
+      </div>
+    </div>
+
+
+    <div class="skills-category">
+      <h3>Tools &amp; Platforms</h3>
+      <div class="tech-tags center">
+        <span class="tech-tag alt2">GitHub</span>
+        <span class="tech-tag alt2">Arduino IDE</span>
+      </div>
+    </div>
+
+
+    <div class="skills-category">
+      <h3>Domains</h3>
+      <div class="tech-tags center">
+        <span class="tech-tag">Computer Vision</span>
+        <span class="tech-tag">Natural Language Processing</span>
+        <span class="tech-tag">IoT</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Certifications Section -->
+  <section class="section" id="certifications">
+    <div class="section-title">
+      <h2>Certifications &amp; Courses</h2>
+      <p>Continued learning</p>
+    </div>
+
+
+    <ul class="cert-list">
+      <li><span>OpenCV:</span> OpenCV Boot Camp Certification</li>
+      <li><span>IBM:</span> AI Literacy Certification</li>
+      <li><span>Lens Studio:</span> Completed Lens Studio Workshop</li>
+    </ul>
   </section>
 
 
@@ -570,51 +717,31 @@
     </div>
 
 
-    <p>Email: your.email@university.edu</p>
-    <p>GitHub: <a href="https://github.com/username" style="color: #e74c3c;">github.com/username</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/username" style="color: #e74c3c;">linkedin.com/in/username</a></p>
-    <a href="mailto:your.email@university.edu" class="btn">Send Me an Email</a>
+    <div class="contact-info">
+      <p>Email: <a href="mailto:lokeshchalla1214@gmail.com">lokeshchalla1214@gmail.com</a></p>
+      <p>Phone: 6305363032</p>
+      <p>GitHub: <a href="https://github.com/challalokesh08">github.com/challalokesh08</a></p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/challa-lokesh-2a53a3287">linkedin.com/in/challa-lokesh-2a53a3287</a></p>
+    </div>
+    <div style="text-align: center;">
+      <a href="mailto:lokeshchalla1214@gmail.com" class="btn">Send Me an Email</a>
+    </div>
   </section>
 
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2024 Name Surname. All rights reserved.</p>
+    <p>&copy; 2026 Challa Lokesh. All rights reserved.</p>
   </footer>
 
 
-  <!-- Optional: Add smooth scroll behavior -->
+  <!-- Navbar background change on scroll -->
   <script>
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-
-
-    // Navbar background change on scroll
     const nav = document.querySelector('nav');
-    let lastScroll = 0;
-
-
     window.addEventListener('scroll', () => {
-      const currentScroll = window.pageYOffset;
-      
-      if (currentScroll > 100) {
-        nav.style.background = 'rgba(44, 62, 80, 0.98)';
-      } else {
-        nav.style.background = 'rgba(44, 62, 80, 0.95)';
-      }
-      
-      lastScroll = currentScroll;
+      nav.style.background = window.pageYOffset > 100
+        ? 'rgba(44, 62, 80, 0.98)'
+        : 'rgba(44, 62, 80, 0.95)';
     });
   </script>
 
