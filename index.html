@@ -1,0 +1,623 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Portfolio - Name Surname</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --primary-light: #34495e;
+      --accent: #e74c3c;
+      --bg: #f8f9fa;
+      --bg-section: #ffffff;
+      --text: #2c3e50;
+      --text-light: #6c757d;
+      --border: #dee2e6;
+    }
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    html {
+      font-size: 62.5%;
+    }
+
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--bg);
+    }
+
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(44, 62, 80, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+    }
+
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #ecf0f1;
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+
+    .nav-links a {
+      font-size: 1.6rem;
+      color: #ecf0f1;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #e74c3c;
+      transition: width 0.3s ease;
+    }
+
+
+    .nav-links a:hover {
+      color: #e74c3c;
+    }
+
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 2rem;
+    }
+
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5rem;
+      font-weight: 700;
+      color: #ecf0f1;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+
+    .hero h1 span {
+      color: #e74c3c;
+    }
+
+
+    .hero p {
+      font-size: 1.8rem;
+      color: #bdc3c7;
+      margin-bottom: 2rem;
+    }
+
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: #e74c3c;
+      color: white;
+      text-decoration: none;
+      font-size: 1.6rem;
+      font-weight: 500;
+      border-radius: 5px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(231, 76, 60, 0.3);
+    }
+
+
+    /* Sections */
+    .section {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+
+    .section-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+
+    .section-title p {
+      color: var(--text-light);
+      font-size: 1.8rem;
+    }
+
+
+    /* About */
+    .about-img {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+
+    .about-img img {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #ecf0f1;
+      transition: transform 0.3s ease;
+    }
+
+
+    .about-img img:hover {
+      transform: scale(1.05);
+    }
+
+
+    .about-text h3 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+
+    .about-text p {
+      color: var(--text-light);
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+
+    .project-card {
+      background: var(--bg-section);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+
+    .project-card:hover {
+      transform: translateY(10px);
+      box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+    }
+
+
+    .project-img {
+      height: 200px;
+      background: #dee2e6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1.4rem;
+    }
+
+
+    .project-content {
+      padding: 2rem;
+    }
+
+
+    .project-content h3 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+
+    .project-content p {
+      color: var(--text-light);
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+
+    .tech-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+
+    .tech-tag {
+      background: #f1c40f;
+      color: #2c3e50;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 1.2rem;
+    }
+
+
+    /* Skills */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+
+    .skill-bar {
+      height: 10px;
+      background: #e0e0e0;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+
+    .skill-bar-fill {
+      height: 100%;
+      background: var(--primary);
+      width: 0;
+      transition: width 1s ease;
+    }
+
+
+    .skill-name {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 1.4rem;
+    }
+
+
+    .skill-percent {
+      color: var(--text-light);
+    }
+
+
+    /* Contact */
+    .contact {
+      background: var(--primary);
+      color: #ecf0f1;
+    }
+
+
+    .contact h2 {
+      color: #ecf0f1;
+    }
+
+
+    .contact p {
+      color: #bdc3c7;
+    }
+
+
+    .contact .btn {
+      background: #e74c3c;
+    }
+
+
+    /* Footer */
+    footer {
+      background: #1a252f;
+      color: #6c757d;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+
+
+    footer p {
+      font-size: 1.4rem;
+    }
+
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 3rem;
+      }
+      .hero p {
+        font-size: 1.5rem;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="#" class="logo">Portfolio</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Hello, I'm <span>Name Surname</span></h1>
+      <p>Student • Developer • Creator</p>
+      <a href="#about" class="btn">Learn More</a>
+    </div>
+  </section>
+
+
+  <!-- About Section -->
+  <section class="section" id="about">
+    <div class="section-title">
+      <h2>About Me</h2>
+      <p>Passionate student exploring the world of technology and design</p>
+    </div>
+
+
+    <div class="about-img">
+      <!-- Replace with your actual photo -->
+      <img src="https://via.placeholder.com/250" alt="Your Photo">
+    </div>
+
+
+    <div class="about-text">
+      <h3>Computer Science Student</h3>
+      <p>I'm a dedicated student with a passion for building web applications and solving complex problems. I love learning new technologies and creating projects that make a difference.</p>
+      <p>Currently studying at [Your University] with a focus on full-stack development, cloud computing, and user experience design.</p>
+    </div>
+  </section>
+
+
+  <!-- Projects Section -->
+  <section class="section" id="projects">
+    <div class="section-title">
+      <h2>My Projects</h2>
+      <p>Some of the projects I've built during my learning journey</p>
+    </div>
+
+
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <div class="project-card">
+        <div class="project-img">
+          Project 1
+        </div>
+        <div class="project-content">
+          <h3>Weather App</h3>
+          <p>A responsive weather application that fetches real-time data from a public API. Built with HTML, CSS, and JavaScript.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">JavaScript</span>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Project 2 -->
+      <div class="project-card">
+        <div class="project-img">
+          Project 2
+        </div>
+        <div class="project-content">
+          <h3>Task Manager</h3>
+          <p>A sleek task management app with local storage persistence. Features add, edit, delete, and categorize tasks.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">LocalStorage</span>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Project 3 -->
+      <div class="project-card">
+        <div class="project-img">
+          Project 3
+        </div>
+        <div class="project-content">
+          <h3>Portfolio Website</h3>
+          <p>My personal portfolio built with modern CSS techniques and smooth animations. Fully responsive across all devices.</p>
+          <div class="tech-tags">
+            <span class="tech-tag">CSS Grid</span>
+            <span class="tech-tag">Flexbox</span>
+            <span class="tech-tag">Animation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Skills Section -->
+  <section class="section" id="skills">
+    <div class="section-title">
+      <h2>Skills</h2>
+      <p>Technologies I've been mastering</p>
+    </div>
+
+
+    <div class="skills-container">
+      <div class="skill-bar">
+        <div class="skill-name">
+          <span>HTML</span>
+          <span class="skill-percent">90%</span>
+        </div>
+        <div class="skill-bar-fill" style="width: 90%"></div>
+      </div>
+
+
+      <div class="skill-bar">
+        <div class="skill-name">
+          <span>CSS</span>
+          <span class="skill-percent">85%</span>
+        </div>
+        <div class="skill-bar-fill" style="width: 85%"></div>
+      </div>
+
+
+      <div class="skill-bar">
+        <div class="skill-name">
+          <span>JavaScript</span>
+          <span class="skill-percent">75%</span>
+        </div>
+        <div class="skill-bar-fill" style="width: 75%"></div>
+      </div>
+
+
+      <div class="skill-bar">
+        <div class="skill-name">
+          <span>React</span>
+          <span class="skill-percent">60%</span>
+        </div>
+        <div class="skill-bar-fill" style="width: 60%"></div>
+      </div>
+
+
+      <div class="skill-bar">
+        <div class="skill-name">
+          <span>Git</span>
+          <span class="skill-percent">80%</span>
+        </div>
+        <div class="skill-bar-fill" style="width: 80%"></div>
+      </div>
+
+
+      <div class="skill-bar">
+        <div class="skill-name">
+          <span>Node.js</span>
+          <span class="skill-percent">50%</span>
+        </div>
+        <div class="skill-bar-fill" style="width: 50%"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Contact Section -->
+  <section class="section" id="contact">
+    <div class="section-title">
+      <h2>Contact</h2>
+      <p>Let's connect and build something amazing together</p>
+    </div>
+
+
+    <p>Email: your.email@university.edu</p>
+    <p>GitHub: <a href="https://github.com/username" style="color: #e74c3c;">github.com/username</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/username" style="color: #e74c3c;">linkedin.com/in/username</a></p>
+    <a href="mailto:your.email@university.edu" class="btn">Send Me an Email</a>
+  </section>
+
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Name Surname. All rights reserved.</p>
+  </footer>
+
+
+  <!-- Optional: Add smooth scroll behavior -->
+  <script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+
+    // Navbar background change on scroll
+    const nav = document.querySelector('nav');
+    let lastScroll = 0;
+
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      
+      if (currentScroll > 100) {
+        nav.style.background = 'rgba(44, 62, 80, 0.98)';
+      } else {
+        nav.style.background = 'rgba(44, 62, 80, 0.95)';
+      }
+      
+      lastScroll = currentScroll;
+    });
+  </script>
+
+
+</body>
+</html>
