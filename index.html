@@ -58,6 +58,42 @@
       mask-image: radial-gradient(circle at 50% 30%, #000 30%, transparent 80%);
     }
 
+    /* ---------- Rolling grid (scroll driven) ---------- */
+    .rolling-grid {
+      position: fixed; left: 50%; top: 50%; width: 240vw; height: 240vh;
+      transform: translate(-50%, -50%) perspective(600px) rotateX(58deg);
+      background-image:
+        linear-gradient(rgba(124,92,255,0.35) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(34,211,238,0.30) 2px, transparent 2px);
+      background-size: 70px 70px;
+      z-index: 0; pointer-events: none; opacity: 0.5;
+      mask-image: radial-gradient(circle at 50% 45%, #000 10%, transparent 60%);
+      will-change: background-position;
+    }
+
+    /* ---------- Scroll progress bar ---------- */
+    .progress {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+      z-index: 200; box-shadow: var(--glow);
+    }
+
+    /* ---------- Side step indicator ---------- */
+    .steps {
+      position: fixed; right: 2rem; top: 50%; transform: translateY(-50%);
+      z-index: 150; display: flex; flex-direction: column; gap: 1.4rem;
+    }
+    .steps a {
+      width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3); transition: all 0.3s ease; position: relative;
+    }
+    .steps a::after {
+      content: attr(data-label); position: absolute; right: 22px; top: 50%; transform: translateY(-50%);
+      font-size: 1.2rem; color: var(--muted); white-space: nowrap; opacity: 0; transition: opacity 0.3s ease; pointer-events: none;
+    }
+    .steps a:hover::after { opacity: 1; }
+    .steps a.active { background: var(--accent); border-color: var(--accent2); box-shadow: var(--glow); transform: scale(1.3); }
+
     /* ---------- Nav ---------- */
     nav {
       position: fixed; top: 0; width: 100%; z-index: 100;
@@ -206,6 +242,15 @@
     /* ---------- Reveal ---------- */
     .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
+    .from-left { transform: translateX(-80px); }
+    .from-left.visible { transform: translateX(0); }
+    .from-right { transform: translateX(80px); }
+    .from-right.visible { transform: translateX(0); }
+    .from-scale { transform: scale(0.85); }
+    .from-scale.visible { transform: scale(1); }
+    .reveal.delay-1 { transition-delay: 0.1s; }
+    .reveal.delay-2 { transition-delay: 0.2s; }
+    .reveal.delay-3 { transition-delay: 0.3s; }
 
     @media (max-width: 860px) {
       .hero-inner, .about-grid, .skill-groups { grid-template-columns: 1fr; }
@@ -223,7 +268,19 @@
     <div class="blob b2"></div>
     <div class="blob b3"></div>
   </div>
+  <div class="rolling-grid" id="rollingGrid"></div>
   <div class="grid-overlay"></div>
+  <div class="progress" id="progress"></div>
+  <div class="steps" id="steps">
+    <a href="#home" data-label="Home"></a>
+    <a href="#about" data-label="About"></a>
+    <a href="#education" data-label="Education"></a>
+    <a href="#experience" data-label="Experience"></a>
+    <a href="#projects" data-label="Projects"></a>
+    <a href="#skills" data-label="Skills"></a>
+    <a href="#certifications" data-label="Certs"></a>
+    <a href="#contact" data-label="Contact"></a>
+  </div>
 
   <!-- Nav -->
   <nav>
@@ -266,11 +323,11 @@
     <span class="eyebrow reveal">About Me</span>
     <h2 class="section-title reveal">More than just a student</h2>
     <div class="about-grid">
-      <div class="glass reveal">
+      <div class="glass reveal from-left">
         <p>I'm an adaptable Information Science Engineering student with a strong foundation in programming, software engineering principles, and hands-on technical execution.</p>
         <p>I have a proven track record of delivering team-driven engineering projects, with a strong commitment to continuous learning and rapid technology adoption — from web development and computer vision to cryptography and IoT.</p>
       </div>
-      <div class="stats reveal">
+      <div class="stats reveal from-right">
         <div class="stat"><div class="num">7.6</div><div class="label">Current CGPA</div></div>
         <div class="stat"><div class="num">2027</div><div class="label">Expected Grad</div></div>
         <div class="stat"><div class="num">6th</div><div class="label">Semester</div></div>
@@ -284,7 +341,7 @@
     <span class="eyebrow reveal">Education</span>
     <h2 class="section-title reveal">Where I'm learning</h2>
     <div class="timeline">
-      <div class="tl-item reveal">
+      <div class="tl-item reveal from-left">
         <div class="tl-card">
           <h3>Bachelor of Engineering — Information Science &amp; Engineering</h3>
           <p class="meta">Cambridge Institute of Technology · 2023 — Expected 2027</p>
@@ -302,14 +359,14 @@
     <span class="eyebrow reveal">Experience</span>
     <h2 class="section-title reveal">What I've built professionally</h2>
     <div class="timeline">
-      <div class="tl-item reveal">
+      <div class="tl-item reveal from-right">
         <div class="tl-card">
           <h3>Web Developer</h3>
           <p class="meta">Parking Pop by SFM Technologies Pvt Ltd (Virtual) · Jul 2025 — Oct 2025</p>
           <ul><li>Designed and maintained scalable relational database schemas, ensuring seamless data flow between front-end UI and the backend server.</li></ul>
         </div>
       </div>
-      <div class="tl-item reveal">
+      <div class="tl-item reveal from-left">
         <div class="tl-card">
           <h3>Cyber Security Intern</h3>
           <p class="meta">Codec Technologies (Remote) · Mar 2026 — Apr 2026</p>
@@ -328,7 +385,7 @@
     <h2 class="section-title reveal">Things I've created</h2>
     <p class="section-sub reveal">A mix of AI, web, and robotics work from my learning journey.</p>
     <div class="proj-grid">
-      <div class="proj reveal">
+      <div class="proj reveal from-left">
         <div class="idx">01 / AI</div>
         <h3>AI Based Resume Ranking</h3>
         <p>A full-stack screening tool leveraging NLP (SpaCy/NLTK) and Cosine Similarity to match resumes against job descriptions with 90%+ accuracy. Flask backend + Streamlit dashboard, with PyPDF2 &amp; pdfplumber parsing.</p>
@@ -336,7 +393,7 @@
           <span class="tag">Python</span><span class="tag c">Flask</span><span class="tag c">Streamlit</span><span class="tag p">SpaCy</span><span class="tag p">NLTK</span>
         </div>
       </div>
-      <div class="proj reveal">
+      <div class="proj reveal from-right">
         <div class="idx">02 / IoT</div>
         <h3>Human Following Robot</h3>
         <p>An IoT autonomous robot using Arduino Uno, ultrasonic &amp; IR sensors to calculate target distance and trace human movement, driving real-time locomotion via DC motors.</p>
@@ -352,7 +409,7 @@
     <span class="eyebrow reveal">Skills</span>
     <h2 class="section-title reveal">My toolkit</h2>
     <div class="skill-groups">
-      <div class="reveal">
+      <div class="reveal from-left">
         <div class="skill-cat"><h4>Programming Languages</h4></div>
         <div class="pillset">
           <span class="pill">Python</span><span class="pill">Java</span><span class="pill">C</span>
@@ -362,7 +419,7 @@
           <span class="pill">Flask</span><span class="pill">OpenCV</span><span class="pill">Streamlit</span><span class="pill">SpaCy</span><span class="pill">NLTK</span><span class="pill">PyPDF2</span>
         </div>
       </div>
-      <div class="reveal">
+      <div class="reveal from-right">
         <div class="skill-cat"><h4>Proficiency</h4></div>
         <div class="skill-row">
           <div class="top"><b>Python</b><span>90%</span></div>
@@ -391,9 +448,9 @@
     <span class="eyebrow reveal">Certifications</span>
     <h2 class="section-title reveal">Always learning</h2>
     <div class="cert-grid">
-      <div class="cert reveal"><div class="prov">OpenCV</div><div class="nm">OpenCV Boot Camp</div></div>
-      <div class="cert reveal"><div class="prov">IBM</div><div class="nm">AI Literacy</div></div>
-      <div class="cert reveal"><div class="prov">Lens Studio</div><div class="nm">Lens Studio Workshop</div></div>
+      <div class="cert reveal from-scale"><div class="prov">OpenCV</div><div class="nm">OpenCV Boot Camp</div></div>
+      <div class="cert reveal from-scale delay-1"><div class="prov">IBM</div><div class="nm">AI Literacy</div></div>
+      <div class="cert reveal from-scale delay-2"><div class="prov">Lens Studio</div><div class="nm">Lens Studio Workshop</div></div>
     </div>
   </section>
 
@@ -459,6 +516,31 @@
         card.style.setProperty('--mx', ((ev.clientX - r.left) / r.width * 100) + '%');
         card.style.setProperty('--my', ((ev.clientY - r.top) / r.height * 100) + '%');
       });
+    });
+
+    // Rolling grid + progress + parallax on scroll
+    const grid = document.getElementById('rollingGrid');
+    const progress = document.getElementById('progress');
+    const blobs = document.querySelectorAll('.blob');
+    function onScroll() {
+      const y = window.pageYOffset;
+      const h = document.body.scrollHeight - window.innerHeight;
+      // roll the grid as we scroll
+      grid.style.backgroundPosition = `0px ${y * 0.6}px`;
+      // progress bar
+      progress.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+      // parallax blobs
+      blobs.forEach((b, i) => { b.style.transform = `translateY(${y * (0.08 + i * 0.05)}px)`; });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Side step indicator active state
+    const stepLinks = document.querySelectorAll('.steps a');
+    window.addEventListener('scroll', () => {
+      let cur = '';
+      sections.forEach(s => { if (window.pageYOffset >= s.offsetTop - 160) cur = s.id; });
+      stepLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
     });
   </script>
 
